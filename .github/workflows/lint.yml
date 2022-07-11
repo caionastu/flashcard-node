@@ -1,19 +1,25 @@
 name: Lint
 on:
   push:
-    branches: [ "master" ]
+    branches: ['master']
 
   workflow_dispatch:
 
 jobs:
   lint:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout from repository
+        uses: actions/checkout@v3
+
       - name: Nodejs
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+
+      - name: Install dependencies
+        run: yarn install
+
       - name: Run EsLint
         run: yarn lint
