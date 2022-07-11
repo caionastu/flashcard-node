@@ -4,14 +4,14 @@ on:
     branches: ['master']
 
 jobs:
+  call-workflow:
+    uses: caionastu/flashcard-node/.github/workflows/lint.yml@master
+
+  call-workflow:
+    uses: caionastu/flashcard-node/.github/workflows/build.yml@master
+
   pipeline:
     runs-on: ubuntu-latest
-
-    call-lint-workflow:
-      uses: caionastu/flashcard-node/.github/workflows/lint.yml@master
-
-    call-build-workflow:
-      uses: caionastu/flashcard-node/.github/workflows/build.yml@master
 
     steps:
       - name: Send discord notification
