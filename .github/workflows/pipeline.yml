@@ -37,6 +37,7 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{secrets.DISCORD_WEBHOOK}}
+          nodetail: true
           title: 'failure'
           description: ':rage: :rage: There is an error in commit. Please, fix the errors. :rage: :rage:'
-          color: #FF0000
+          color: 0xff91a4
