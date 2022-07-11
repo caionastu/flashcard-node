@@ -39,3 +39,4 @@ jobs:
           webhook: ${{secrets.DISCORD_WEBHOOK}}
           title: 'failure'
           description: ':rage: :rage: There is an error in commit. Please, fix the errors. :rage: :rage:'
+          color: #FF0000

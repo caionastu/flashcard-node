@@ -3,4 +3,9 @@ describe('some new test suite', () => {
     console.log('new test')
     expect(true).toBe(true)
   })
+
+  it('should fail', () => {
+    console.log('new test')
+    expect(true).toBe(false)
+  })
 })
