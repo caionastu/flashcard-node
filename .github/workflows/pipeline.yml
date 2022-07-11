@@ -4,10 +4,10 @@ on:
     branches: ['master']
 
 jobs:
-  call-workflow:
+  call-lint-workflow:
     uses: caionastu/flashcard-node/.github/workflows/lint.yml@master
 
-  call-workflow:
+  call-build-workflow:
     uses: caionastu/flashcard-node/.github/workflows/build.yml@master
 
   pipeline:
