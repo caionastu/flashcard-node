@@ -1,4 +1,4 @@
-name: Lint
+name: Build
 on:
   push:
     branches: ['master']
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: yarn install
 
-      - name: Run EsLint
-        run: yarn lint
+      - name: Build Project
+        run: yarn build
