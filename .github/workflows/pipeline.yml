@@ -4,13 +4,15 @@ on:
     branches: ['master']
 
 jobs:
-  call-lint-workflow:
+  lint:
     uses: caionastu/flashcard-node/.github/workflows/lint.yml@master
 
-  call-build-workflow:
+  build:
+    need: lint
     uses: caionastu/flashcard-node/.github/workflows/build.yml@master
 
   pipeline:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
