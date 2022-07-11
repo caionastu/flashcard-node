@@ -7,10 +7,10 @@ jobs:
   pipeline:
     runs-on: ubuntu-latest
 
-    call-workflow:
+    call-lint-workflow:
       uses: caionastu/flashcard-node/.github/workflows/lint.yml@master
 
-    call-workflow:
+    call-build-workflow:
       uses: caionastu/flashcard-node/.github/workflows/build.yml@master
 
     steps:
@@ -18,5 +18,4 @@ jobs:
         uses: tsickert/discord-webhook@v4.0.0
         with:
           webhook-url: ${{secrets.DISCORD_WEBHOOK}}
-          content: "Test from githubActions"
-      
+          content: 'Test from githubActions'
