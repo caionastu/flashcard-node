@@ -1,5 +1,4 @@
-import { Request, Response, NextFunction } from 'express'
-import admin from 'firebase-admin'
+import { Response, NextFunction } from 'express'
 import { ApiError } from '../exceptions/ApiError'
 import { RequestContext } from '../utils/RequestContext'
 
@@ -27,7 +26,7 @@ class AuthorizationMiddleware {
 
     /* Mocked authorization */
 
-    if (authorization == mockedUserId) {
+    if (authorization === mockedUserId) {
       request.userId = mockedUserId
       next()
     } else {

@@ -2,7 +2,7 @@ import admin from 'firebase-admin'
 
 function initialize() {
   admin.initializeApp({
-    credential: admin.credential.cert('src/serviceAccount.json')
+    credential: admin.credential.cert('../../serviceAccount.json')
   })
 }
 

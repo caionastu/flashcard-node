@@ -156,7 +156,7 @@ class DeckController {
     const { id } = request.params
     const userId = request.userId
 
-    logger.info('Starting request to delete deck: %s', id, { userId: userId })
+    logger.info('Starting request to delete deck: %s', id, { userId })
 
     await DeckService.deleteById(id, userId)
 

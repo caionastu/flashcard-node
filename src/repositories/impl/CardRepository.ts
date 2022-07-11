@@ -4,7 +4,7 @@ import { ICardRepository } from '../ICardRepository'
 
 class CardRepository implements ICardRepository {
   async findAllByDeckId(deckId: string): Promise<ICard[]> {
-    return await Card.find({ deckId: deckId })
+    return await Card.find({ deckId })
   }
 
   async findById(id: string): Promise<ICard> {
@@ -21,7 +21,7 @@ class CardRepository implements ICardRepository {
   }
 
   async deleteByDeckId(deckId: string): Promise<void> {
-    await Card.deleteMany({ deckId: deckId })
+    await Card.deleteMany({ deckId })
   }
 }
 

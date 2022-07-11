@@ -23,11 +23,11 @@ function handleError(
   }
 
   if (error instanceof mongoose.Error.ValidationError) {
-    return response.status(400).json({ error: error })
+    return response.status(400).json({ error })
   }
 
   if (error instanceof mongoose.Error.CastError) {
-    return response.status(400).json({ error: error })
+    return response.status(400).json({ error })
   }
 
   return response.status(500).json({ error: error.message })

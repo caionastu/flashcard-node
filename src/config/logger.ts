@@ -1,5 +1,4 @@
 import pino from 'pino'
-import envs from './envs'
 
 const logger = pino({
   // transport:

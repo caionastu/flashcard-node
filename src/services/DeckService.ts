@@ -40,7 +40,7 @@ class DeckService {
 
   private verifiyUserId(deck: IDeck, userId: String): void {
     logger.info("Checking if the user is deck's owner.")
-    if (deck.userId != userId) {
+    if (deck.userId !== userId) {
       throw new ApiError(
         "The logged user doesn't have access to delete this deck.",
         403

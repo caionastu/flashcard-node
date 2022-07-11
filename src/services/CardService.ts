@@ -43,7 +43,7 @@ class CardService {
   async updateLastVisit(id: string, request: LastVisitRequest) {
     const card = await this.findById(id)
 
-    let nextVisit: Date = new Date()
+    const nextVisit: Date = new Date()
     switch (request.difficulty) {
       case Difficulties.EASY: {
         nextVisit.setDate(nextVisit.getDate() + 3)
@@ -62,7 +62,7 @@ class CardService {
     card.lastVisit = {
       difficulty: request.difficulty,
       date: new Date(),
-      nextVisit: nextVisit
+      nextVisit
     }
     card.visitCount += 1
 

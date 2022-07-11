@@ -8,7 +8,7 @@ class DeckRepository implements IDeckRepository {
   }
 
   async findAllByUserId(userId: String): Promise<IDeck[]> {
-    return await Deck.find({ userId: userId })
+    return await Deck.find({ userId })
   }
 
   async save(iDeck: IDeck): Promise<IDeck> {
@@ -22,7 +22,7 @@ class DeckRepository implements IDeckRepository {
 
   async existsById(id: string): Promise<boolean> {
     const count = await Deck.count({ _id: id })
-    return count == 0
+    return count === 0
   }
 }
 
