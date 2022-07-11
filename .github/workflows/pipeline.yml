@@ -15,7 +15,7 @@ jobs:
     needs: lint
     uses: caionastu/flashcard-node/.github/workflows/test.yml@master
 
-  discord-notification:
+  success-discord-notification:
     needs: [build, test]
     runs-on: ubuntu-latest
 
@@ -23,6 +23,19 @@ jobs:
       - name: Send discord notification
         uses: sarisia/actions-status-discord@v1
         with:
-          webhook-url: ${{secrets.DISCORD_WEBHOOK}}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
           title: 'commit'
-          description: 'Commit was successfully linted, tested, built and pushed into master branch'
+          description: 'Commit was successfully linted, tested and built.'
+
+  failure-discord-notification:
+    if: ${{ failure() }}
+    needs: [lint, build, test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send discord notification
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{secrets.DISCORD_WEBHOOK}}
+          title: 'failure'
+          description: ':rage: :rage: There is an error in commit. Please, fix the errors. :rage: :rage:'
