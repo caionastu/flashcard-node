@@ -1,0 +1,22 @@
+name: Pullrequest Master
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      call-workflow:
+        uses: caionastu/flashcard-node/.github/workflows/lint.yml@master
+
+      call-workflow:
+        uses: caionastu/flashcard-node/.github/workflows/build.yml@master
+      
+      - name: Send discord notification
+        uses: tsickert/discord-webhook@v4.0.0
+        with:
+          webhook-url: ${{secrets.DISCORD_WEBHOOK}}
+          content: "Test from githubActions"
+      
