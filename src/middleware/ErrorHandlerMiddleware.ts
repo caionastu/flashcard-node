@@ -1,14 +1,9 @@
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response } from 'express'
 import mongoose from 'mongoose'
 import { logger } from '../config/logger'
 import { ApiError } from '../exceptions/ApiError'
 
-function handleError(
-  error: Error,
-  request: Request,
-  response: Response,
-  next: NextFunction
-) {
+function handleError(error: Error, request: Request, response: Response) {
   /* 
     TODO Create a base ErrorResponse class and return to the response.
     TODO Instead os centralizing the error handler here, call another service to handle the error,

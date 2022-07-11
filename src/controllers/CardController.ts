@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response } from 'express'
 import { logger } from '../config/logger'
 import CardService from '../services/CardService'
 import { CardResponse } from './responses/CardResponse'
@@ -6,11 +6,7 @@ import { CardResponse } from './responses/CardResponse'
 // TODO add Swagger Documentation
 
 class CardController {
-  public async findAllByDeckId(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
+  public async findAllByDeckId(request: Request, response: Response) {
     const { deckId } = request.params
 
     logger.info(`Starting request to find all cards by deck id: ${deckId}.`)
@@ -26,11 +22,7 @@ class CardController {
     response.status(200).json(cards)
   }
 
-  public async create(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
+  public async create(request: Request, response: Response) {
     logger.info(`Starting request to create new card.`)
     const card = await CardService.create(request.body)
 
@@ -38,11 +30,7 @@ class CardController {
     response.status(201).json(CardResponse.from(card))
   }
 
-  public async update(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
+  public async update(request: Request, response: Response) {
     const { id } = request.params
     logger.info(`Stargin request to update card: ${id}.`)
 
@@ -52,11 +40,7 @@ class CardController {
     response.status(201).json(CardResponse.from(card))
   }
 
-  public async updateLastVisit(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
+  public async updateLastVisit(request: Request, response: Response) {
     const { id } = request.params
     logger.info(`Starting request to update the last visit of the card: ${id}.`)
 
@@ -66,11 +50,7 @@ class CardController {
     response.status(201).json(card)
   }
 
-  public async delete(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
+  public async delete(request: Request, response: Response) {
     const { id } = request.params
     logger.info(`Starting request to delete a card by id: ${id}.`)
 
