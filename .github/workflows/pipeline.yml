@@ -8,7 +8,7 @@ jobs:
     uses: caionastu/flashcard-node/.github/workflows/lint.yml@master
 
   build:
-    need: lint
+    needs: lint
     uses: caionastu/flashcard-node/.github/workflows/build.yml@master
 
   pipeline:
