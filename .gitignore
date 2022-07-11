@@ -6,3 +6,4 @@ tmp/
 temp/
 serviceAccount.json
 .env
+coverage/
