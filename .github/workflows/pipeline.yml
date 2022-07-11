@@ -11,13 +11,18 @@ jobs:
     needs: lint
     uses: caionastu/flashcard-node/.github/workflows/build.yml@master
 
-  pipeline:
-    needs: build
+  test:
+    needs: lint
+    uses: caionastu/flashcard-node/.github/workflows/test.yml@master
+
+  discord-notification:
+    needs: [build, test]
     runs-on: ubuntu-latest
 
     steps:
       - name: Send discord notification
-        uses: tsickert/discord-webhook@v4.0.0
+        uses: sarisia/actions-status-discord@v1
         with:
           webhook-url: ${{secrets.DISCORD_WEBHOOK}}
-          content: 'Test from githubActions'
+          title: 'commit'
+          description: 'Commit was successfully linted, tested, built and pushed into master branch'
